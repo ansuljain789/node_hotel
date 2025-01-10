@@ -1,0 +1,20 @@
+{
+  "name": "node11",
+  "version": "1.0.0",
+  "description": "node js learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "server.js"
+  },
+  "author": "ansul jain",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.19.2",
+    "loadash": "^1.0.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.7.0",
+    "nodemon": "^3.1.4"
+  }
+}
