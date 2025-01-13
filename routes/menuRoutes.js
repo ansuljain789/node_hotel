@@ -41,7 +41,7 @@ router.post('/',async (req,res)=>{
   
   })
 
-  router.get('./:tasteType',async(req,res)=>{
+  router.get('/:tasteType',async(req,res)=>{
     try{
               
 
@@ -58,4 +58,4 @@ router.post('/',async (req,res)=>{
     }
   })
 
-  module.exports= router
+  module.exports= router;
