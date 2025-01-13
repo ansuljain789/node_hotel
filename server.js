@@ -2,11 +2,9 @@ const express = require('express')
 const app = express();
 const db = require('./db');
 require('dotenv').config();
-
-
+const passport = require('./auth')
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-
 const PORT = process.env.PORT || 3000;
 
 //middleWare function
@@ -16,8 +14,19 @@ const logRequest = (req,res,next)=>{
   next();
   
 }
-app.use(logRequest)
-app.get('/', function(req, res){
+
+
+
+//calling the midleware
+app.use(passport.initialize()); ///for password
+ app.use(logRequest)       ///for logrequest
+
+const localAuthMiddleware = passport.authenticate('local',{session:false});
+
+
+
+
+app.get('/', localAuthMiddleware, function(req, res){
   res.send('welcome to our hotel');
   
 })
@@ -25,7 +34,7 @@ app.get('/', function(req, res){
 
 
 const personRoutes = require('./routes/personRoutes')
-app.use('/person',personRoutes);
+app.use('/person',localAuthMiddleware,personRoutes);
 const menuRoutes = require('./routes/menuRoutes')
 app.use('/menu',menuRoutes);
 
