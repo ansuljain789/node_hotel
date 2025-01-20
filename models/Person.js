@@ -50,7 +50,7 @@ const personSchema = new mongoose.Schema({
               ///hash password generate
               const salt = await bcrypt.genSalt(10);
               /// hash password
-                 const hashedPassword=  await bcrypt.hashhau(person.password,salt);
+                 const hashedPassword=  await bcrypt.hash(person.password,salt);
                  //override the plain password with the hashed one 
                  person.password = hashedPassword;
               next();
